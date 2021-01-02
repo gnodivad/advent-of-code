@@ -2,8 +2,10 @@ package utils
 
 import (
 	"bufio"
+	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 )
 
 func ReadStringsFromFile(filepath string) (strings []string) {
@@ -20,4 +22,10 @@ func ReadStringsFromFile(filepath string) (strings []string) {
 	}
 
 	return
+}
+
+func ReadFile(filepath string) string {
+	buf, _ := ioutil.ReadFile(filepath)
+
+	return strings.TrimSpace(string(buf))
 }
