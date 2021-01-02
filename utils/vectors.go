@@ -4,6 +4,11 @@ type Vector interface {
 	Neighbors() []Vector
 }
 
+// Refer to https://www.redblobgames.com/grids/hexagons/#neighbors
+type VectorAxiaHexagonal struct {
+	Q, R int
+}
+
 type Vector3 struct {
 	X, Y, Z int
 }
@@ -63,4 +68,11 @@ func (v Vector4) Neighbors() []Vector {
 	}
 
 	return neighbors
+}
+
+func (v VectorAxiaHexagonal) Add(v2 VectorAxiaHexagonal) VectorAxiaHexagonal {
+	return VectorAxiaHexagonal{
+		Q: v.Q + v2.Q,
+		R: v.R + v2.R,
+	}
 }
